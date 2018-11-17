@@ -4,7 +4,12 @@ function openTab(e, tabID){
   for(i = 0; i < tabcontents.length; i++){
     tabcontents[i].className = tabcontents[i].className.replace(" active", "");
   }
+  headers = document.getElementsByClassName("top");
+  for(i = 0; i < headers.length; i++){
+    headers[i].className = headers[i].className.replace(" active", "");
+  }
   document.getElementById(tabID).className += " active";
+  document.getElementById("" + tabID + "-header").className += " active";
 }
 
 function submitLoginData(){
@@ -12,7 +17,7 @@ function submitLoginData(){
   fields = document.getElementById("login");
   email = fields.getElementsByClassName("email")[0].value;
   pw = fields.getElementsByClassName("pw")[0].value;
-  alert("log on submitted! email: " + email + " and pw: " + pw);
+  alert("The following log on information was submitted:\nEmail: " + email + "\nPassword: " + pw);
 }
 function submitSignupData(){
   var fields, first, last, email, pw, verifypw, account;
@@ -22,19 +27,11 @@ function submitSignupData(){
   email = fields.getElementsByClassName("email")[0].value;
   pw = fields.getElementsByClassName("pw")[0].value;
   verifypw = fields.getElementsByClassName("pw")[1].value;
-<<<<<<< HEAD
   if(fields.getElementsByClassName("account-type")[0].checked){
-    account = fields.getElementsByClassName("account-type")[0].value;
+    account = "Professional";
   }
   if(fields.getElementsByClassName("account-type")[1].checked){
-    account = fields.getElementsByClassName("account-type")[1].value;
+    account = "Client";
   }
-  alert("signup submitted! last: " + last + " and account type: " + account);
+  alert("The following sign up information was submitted:\nName: " + first + " " + last + "\nEmail: " + email + "\nPassword: " + pw + "\nRetyped Password: " + verifypw + "\nAccount Type: " + account);
 }
-=======
-  alert("signup submitted! last: " + last + " and pw 1&2: " + pw + " " + verifypw);
-}
-
-document.getElementById("signU").addEventListener("click",openTab(e, "signup"));
-document.getElementById("log").addEventListener("click",openTab(e, "login"));
->>>>>>> fb0f5af1d2365ee6e2d26d0114a7b907a6790bc3
