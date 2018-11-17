@@ -4,6 +4,7 @@ body{
 
 .parent{
   margin: 40px;
+<<<<<<< HEAD
   box-shadow: 0px 6px 12px;
   background: #b7eeff;
   border-color: #0e227e;
@@ -16,6 +17,10 @@ body{
 }
 .parent .active{
   display: block;
+=======
+  background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/mountains-background-for-titles-intro-projects-and-etc_ew22rur3l__F0000.png');
+  padding: 8px;
+>>>>>>> parent of f1a905f... Revert "backgrounds and color changes"
 }
 
 .top{
