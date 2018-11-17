@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 17, 2018 at 01:50 PM
+-- Generation Time: Nov 17, 2018 at 09:15 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `therapysite`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client`
+--
+
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `user_id` int(50) NOT NULL,
+  `client_id` int(50) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`client_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`user_id`, `client_id`) VALUES
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +109,30 @@ INSERT INTO `professional` (`user_id`, `professional_id`, `location`, `school`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `requests`
+--
+
+DROP TABLE IF EXISTS `requests`;
+CREATE TABLE IF NOT EXISTS `requests` (
+  `user_id` int(50) NOT NULL,
+  `professional_id` int(50) NOT NULL,
+  `date` date NOT NULL,
+  `accepted` bit(1) NOT NULL DEFAULT b'0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`user_id`, `professional_id`, `date`, `accepted`) VALUES
+(2, 1, '2018-11-17', b'0'),
+(2, 1, '2018-11-17', b'0'),
+(2, 1, '2018-11-17', b'0'),
+(2, 1, '2018-11-17', b'0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `session`
 --
 
@@ -149,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `isVerified` bit(1) DEFAULT NULL,
   `isClient` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -162,7 +206,9 @@ INSERT INTO `user` (`id`, `fName`, `lName`, `email`, `password`, `isVerified`, `
 (5, 'Jane', 'Smith', 'janeS@gmail.com', 'root', b'1', b'1'),
 (6, 'Ryan', 'Davidson', 'rdav@yahoo.com', ' root', b'1', b'1'),
 (7, 'Mary', 'Huges', 'mhughes.yahoo.com', 'root', b'1', b'0'),
-(8, 'Erik', 'Mars', 'EMars.yahoo.com', 'root', b'1', b'0');
+(8, 'Erik', 'Mars', 'EMars.yahoo.com', 'root', b'1', b'0'),
+(9, 'Bryan', 'Short', 'bshort@gmail.com', ' root', b'1', b'0'),
+(10, 'Jack', 'Youngblood', 'Jty@yahoo.com', ' root', b'1', b'0');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
