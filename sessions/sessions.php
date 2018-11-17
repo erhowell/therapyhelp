@@ -15,9 +15,10 @@
      <?php
         $professional_id = $name = $next_session=$next_time ="";
         $mysqli = new mysqli("localhost", "root", "", "therapysite");
-        $query = "SELECT s.professional_id, s.next_session, s.next_time
+        $query = "SELECT s.professional_id, s.next_session, s.next_time, p.bio, p.rate,p.location
                  FROM session s
                  Join client c on c.client_id = s.client_id
+                 Join professional p on p.professional_id = s.professional_id
                   Join user u on u.id = c.user_id
                  WHERE u.id =$user_id";
         if ($result=mysqli_query($mysqli,$query))
@@ -29,6 +30,9 @@
               $professional_id = $row[0];
               $next_session = $row[1];
               $next_time = $row[2];
+              $bio = $row[3];
+              $location = $row[5];
+              $rate=$row[4];
             }
 
         // Free result set
@@ -73,14 +77,17 @@
     </nav>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <h1 class="display-4">Your Sessions</h1>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col">
-          <h3>Your Professional:<?php echo $name?> </h3>
+          <h2>Your Professional:<?php echo $name?> </h2>
+          <h4>Location: <?php echo $location?></h4>
+          <h4>Rate: $<?php echo $rate?> / hr</h4>
+          <h2>Bio</h2>
+          <p><?php echo $bio?></p>
         </div>
         <div class="col">
           <h3 id="date">Your Next Appointment:</h3>
